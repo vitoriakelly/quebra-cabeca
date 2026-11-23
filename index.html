@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quebra-Cabeça</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🧩 Quebra-Cabeça</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="gridSize">Dificuldade:</label>
+                <select id="gridSize">
+                    <option value="3">Fácil (3x3)</option>
+                    <option value="4" selected>Médio (4x4)</option>
+                    <option value="5">Difícil (5x5)</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="imageUpload">Sua imagem:</label>
+                <input type="file" id="imageUpload" accept="image/*">
+            </div>
+            
+            <button id="startBtn">Novo Jogo</button>
+        </div>
+        
+        <div class="stats">
+            <span>Movimentos: <strong id="moves">0</strong></span>
+            <span>Tempo: <strong id="timer">00:00</strong></span>
+        </div>
+        
+        <div class="game-area">
+            <div class="puzzle-container">
+                <h3>Monte o quebra-cabeça</h3>
+                <div id="puzzleBoard" class="board"></div>
+            </div>
+            
+            <div class="reference-container">
+                <h3>Imagem de referência</h3>
+                <div id="referenceImage" class="reference"></div>
+            </div>
+        </div>
+        
+        <div id="victoryModal" class="modal hidden">
+            <div class="modal-content">
+                <h2>🎉 Parabéns!</h2>
+                <p>Você completou o quebra-cabeça!</p>
+                <p>Movimentos: <span id="finalMoves"></span></p>
+                <p>Tempo: <span id="finalTime"></span></p>
+                <button id="playAgainBtn">Jogar Novamente</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
