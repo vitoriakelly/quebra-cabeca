@@ -4,55 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quebra-Cabeça</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="particles" id="particles"></div>
+    
+    <canvas id="confettiCanvas"></canvas>
+    
     <div class="container">
-        <h1>🧩 Quebra-Cabeça</h1>
+        <header>
+            <h1>🧩 Quebra-Cabeça</h1>
+            <button id="themeToggle" class="theme-btn" title="Alternar tema">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </header>
         
         <div class="controls">
             <div class="control-group">
-                <label for="gridSize">Dificuldade:</label>
+                <label for="gridSize">Dificuldade</label>
                 <select id="gridSize">
-                    <option value="3">Fácil (3x3)</option>
-                    <option value="4" selected>Médio (4x4)</option>
-                    <option value="5">Difícil (5x5)</option>
+                    <option value="3">😊 Fácil (3x3)</option>
+                    <option value="4" selected>😎 Médio (4x4)</option>
+                    <option value="5">🔥 Difícil (5x5)</option>
                 </select>
             </div>
             
             <div class="control-group">
-                <label for="imageUpload">Sua imagem:</label>
-                <input type="file" id="imageUpload" accept="image/*">
+                <label for="imageUpload">Sua imagem</label>
+                <div class="file-upload">
+                    <input type="file" id="imageUpload" accept="image/*">
+                    <span class="file-label">📷 Escolher foto</span>
+                </div>
             </div>
             
-            <button id="startBtn">Novo Jogo</button>
+            <div class="control-group">
+                <label>Som</label>
+                <button id="soundToggle" class="sound-btn" title="Alternar som">
+                    <span class="sound-icon">🔊</span>
+                </button>
+            </div>
+            
+            <button id="startBtn" class="start-btn">
+                <span>🎮</span> Novo Jogo
+            </button>
         </div>
         
         <div class="stats">
-            <span>Movimentos: <strong id="moves">0</strong></span>
-            <span>Tempo: <strong id="timer">00:00</strong></span>
+            <div class="stat-item">
+                <span class="stat-icon">👆</span>
+                <span class="stat-label">Movimentos</span>
+                <span class="stat-value" id="moves">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">⏱️</span>
+                <span class="stat-label">Tempo</span>
+                <span class="stat-value" id="timer">00:00</span>
+            </div>
         </div>
         
         <div class="game-area">
             <div class="puzzle-container">
-                <h3>Monte o quebra-cabeça</h3>
+                <h3>✨ Monte o quebra-cabeça</h3>
                 <div id="puzzleBoard" class="board"></div>
             </div>
             
             <div class="reference-container">
-                <h3>Imagem de referência</h3>
+                <h3>🖼️ Referência</h3>
                 <div id="referenceImage" class="reference"></div>
+                <p class="hint">Dica: Use as setas do teclado!</p>
             </div>
         </div>
         
-        <div id="victoryModal" class="modal hidden">
-            <div class="modal-content">
-                <h2>🎉 Parabéns!</h2>
-                <p>Você completou o quebra-cabeça!</p>
-                <p>Movimentos: <span id="finalMoves"></span></p>
-                <p>Tempo: <span id="finalTime"></span></p>
-                <button id="playAgainBtn">Jogar Novamente</button>
+        <footer>
+            <p>Feito com 💜 por Vitória Kelly</p>
+        </footer>
+    </div>
+    
+    <div id="victoryModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="trophy">🏆</div>
+            <h2>Parabéns!</h2>
+            <p class="victory-message">Você completou o quebra-cabeça!</p>
+            <div class="victory-stats">
+                <div class="victory-stat">
+                    <span class="victory-stat-icon">👆</span>
+                    <span class="victory-stat-value" id="finalMoves">0</span>
+                    <span class="victory-stat-label">movimentos</span>
+                </div>
+                <div class="victory-stat">
+                    <span class="victory-stat-icon">⏱️</span>
+                    <span class="victory-stat-value" id="finalTime">00:00</span>
+                    <span class="victory-stat-label">tempo</span>
+                </div>
             </div>
+            <button id="playAgainBtn" class="play-again-btn">
+                <span>🔄</span> Jogar Novamente
+            </button>
         </div>
     </div>
     
